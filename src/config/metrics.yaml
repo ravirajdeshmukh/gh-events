@@ -1,0 +1,34 @@
+kpis:
+  - id: avg_pr_time
+    name: Average Time Between Pull Requests
+    sql: |
+      WITH pr_with_diff AS (
+        SELECT
+          "repo.name",
+          created_at,
+          LEAD(created_at) OVER (PARTITION BY "repo.name" ORDER BY created_at) AS next_created_at
+        FROM pullrequestevent
+      )
+      SELECT
+        "repo.name",
+        AVG(EXTRACT(EPOCH FROM next_created_at - created_at) / 60) AS avg_minutes
+      FROM pr_with_diff
+      WHERE next_created_at IS NOT NULL
+      GROUP BY "repo.name";
+    visualisation: null
+
+  - id: event_count_offset
+    name: Event Counts in Last X Minutes
+    sql: |
+      SELECT 'pullrequestevent' AS event_type, COUNT(*) AS count
+      FROM pullrequestevent
+      WHERE created_at >= CURRENT_TIMESTAMP - INTERVAL '${offset}' MINUTE
+      UNION ALL
+      SELECT 'watchevent' AS event_type, COUNT(*) AS count
+      FROM watchevent
+      WHERE created_at >= CURRENT_TIMESTAMP - INTERVAL '${offset}' MINUTE
+      UNION ALL
+      SELECT 'issuesevent' AS event_type, COUNT(*) AS count
+      FROM issuesevent
+      WHERE created_at >= CURRENT_TIMESTAMP - INTERVAL '${offset}' MINUTE
+    visualisation: null
