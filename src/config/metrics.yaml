@@ -7,7 +7,7 @@ kpis:
           "repo.name",
           created_at,
           LEAD(created_at) OVER (PARTITION BY "repo.name" ORDER BY created_at) AS next_created_at
-        FROM pullrequestevent
+        FROM pullrequestevent where "payload.pull_request.state" = 'open'
       )
       SELECT
         "repo.name",

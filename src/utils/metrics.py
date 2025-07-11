@@ -18,7 +18,7 @@ def load_kpi_config():
         config = MetricConfig(**raw_config)
         return config.kpis
     except ValidationError as e:
-        print("[❌] KPI config validation failed:")
+        print("[-] KPI config validation failed:")
         print(e)
         raise e
 

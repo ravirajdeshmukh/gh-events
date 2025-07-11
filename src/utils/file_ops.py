@@ -6,7 +6,7 @@ import yaml
 import pyarrow
 
 def list_dir(directory):
-    return [f for f in os.listdir(directory)]
+    return [f for f in os.listdir(directory) if not f.startswith('.')]
 
 def load_json_file(filepath):
     with open(filepath, "r") as f:

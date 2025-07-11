@@ -55,7 +55,6 @@ def transform_events(raw_events):
     return df
 
 if __name__ == "__main__":
-    while True:
+    # while True:
         convert_json_to_parquet()
-
-        time.sleep(10)
+        # time.sleep(10)

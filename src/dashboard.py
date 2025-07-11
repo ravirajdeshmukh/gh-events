@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 
-API_BASE = "http://localhost:9000/kpi"
+API_BASE = "http://localhost:8000/kpi"
 
 st.title("📊 GitHub Events Metrics")
 
@@ -9,7 +9,7 @@ tab1, tab2 = st.tabs(["Event Counts", "PR Time"])
 
 with tab1:
     st.header("Event Counts by Offset")
-    offset = st.slider("Minutes to Look Back", 5, 10000, 500)
+    offset = st.slider("Minutes to Look Back", 5, 100, 50)
 
     if st.button("Fetch Counts"):
         r = requests.get(f"{API_BASE}/event_count_offset?offset={offset}")

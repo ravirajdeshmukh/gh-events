@@ -13,9 +13,9 @@ from utils.file_ops import write_json_to_file
 watch_event_buffer = deque()
 issues_event_buffer = deque()
 pr_event_buffer = deque()
-EVENT_THRESHOLD = 1
+EVENT_THRESHOLD = 10
 FETCH_INTERVAL_SECONDS = 10
-RUN_DURATION = 120 
+RUN_DURATION = 300 
 
 event_router = {
     "WatchEvent": watch_event_buffer,

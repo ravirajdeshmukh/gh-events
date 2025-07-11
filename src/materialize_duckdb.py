@@ -25,7 +25,7 @@ def create_duckdb_database():
     con.close()
 
 if __name__ == "__main__":
-    while True:
+    # while True:
         create_duckdb_database()
-        time.sleep(60)
-    print("[INFO] DuckDB database created successfully.")
+        # time.sleep(60)
+        print("[INFO] DuckDB database created successfully.")
