@@ -2,6 +2,7 @@ FROM python:3.13-slim
 
 # Set environment variables
 ENV POETRY_VERSION=1.8.2
+ENV LIVE=true
 ENV PYTHONUNBUFFERED=1
 WORKDIR /app
 

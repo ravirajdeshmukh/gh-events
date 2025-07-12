@@ -1,3 +1,5 @@
+# This YAML file contains the events and their attributes that we want to 
+# fetch from the raw ingested events. 
 PullRequestEvent:
   fields:
     - id
