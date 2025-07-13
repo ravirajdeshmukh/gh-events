@@ -120,6 +120,11 @@ FastAPI: http://localhost:9000/docs
 
 Dashboard: http://localhost:8501
 
+Unit tests are located in the `tests/` directory and can be run using:
+
+```
+PYTHONPATH=src poetry run pytest tests/
+```
 
 ## Data flow in brief
 For ingestion, I have added a while loop in the code that based on the live param runs either indefinitely or for a configured duration. In either case, the code makes a call, then sleeps for 10s before making the next call. The interval between the calls can be configured. Also the duration of the execution can be passed as a param using the duration keyword. The code maintains a deque, which is dumped in a JSON file after the configured event count is reached. We are maintaining 3 diff deques for 3 events.
