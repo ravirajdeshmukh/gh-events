@@ -20,6 +20,9 @@ COPY src /app/src/
 # Install dependencies
 RUN poetry config virtualenvs.create false && poetry install --no-interaction --no-ansi
 
+# Run unit tests after installing packages
+RUN PYTHONPATH=src poetry run pytest tests/ --maxfail=1 --disable-warnings
+
 # Create required directories
 RUN mkdir -p /app/data/bronze /app/data/silver /app/data/db
 
