@@ -205,3 +205,12 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+.gitignore
+pyvenv.cfg
+
+data/silver/*
+data/bronze/*
+
+
+.vscode/launch.json
+data/.DS_Store

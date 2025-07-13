@@ -1,0 +1,31 @@
+# This YAML file contains the events and their attributes that we want to 
+# fetch from the raw ingested events. 
+PullRequestEvent:
+  fields:
+    - id
+    - type
+    - created_at
+    - repo.name
+    - actor.login
+    - payload.pull_request.number
+    - payload.pull_request.state
+    - payload.pull_request.merged
+
+WatchEvent:
+  fields:
+    - id
+    - type
+    - created_at
+    - repo.name
+    - actor.login
+
+IssuesEvent:
+  fields:
+    - id
+    - type
+    - created_at
+    - repo.name
+    - actor.login
+    - payload.action
+    - payload.issue.title
+    - payload.issue.state
